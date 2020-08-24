@@ -1,15 +1,21 @@
 #!/bin/zsh
 
+if ! open -Ra "zoom.us"
+then
+    echo "Please install zoom."
+    exit 1
+fi
+
 if [ -z "$1" ]
 then
     echo "Please enter a zoom link."
-    return 0
+    exit 1
 fi
 
 if ! command -v ggrep &> /dev/null
 then
     echo "Please install ggrep. i.e homebrew install grep"
-    return 0
+    exit 1
 fi
 
 CONFNO=`echo "$1" | ggrep -oP '(?<=\/j\/)[0-9]*'`
