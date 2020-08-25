@@ -20,9 +20,7 @@ ShowTranslit:
    if !errorlevel{
       sleep, 100
       input := clipboard
-      ;msgbox % input
       lit := translit(input)
-      ;msgbox % lit
       if (lit = 0) {
          output := input
       }
@@ -47,13 +45,10 @@ CopyTranslit:
    clipboard := 
    send ^c
    clipwait, 0
-   ;msgbox % errorlevel
    if !errorlevel{
       sleep, 100
       input := clipboard
-      ;msgbox % input
       lit := translit(input)
-      ;msgbox % lit
       if (lit = 0) {
          clipboard := input
          output := input
@@ -80,18 +75,11 @@ return
 RemoveToolTip:
 tooltip 
 return
-;MsgBox, % translit("Здравствуйте")
-;ExitApp
 
 translit(str, from := "auto", to := "en")  {
    static JS := CreateScriptObj(), _ := JS.( GetJScript() ) := JS.("delete ActiveXObject; delete GetObject;")
    json := SendRequest(JS, str, to, from, proxy := "")
    oJSON := JS.("(" . json . ")")
-   ;msgbox % json
-   ;msgbox % oJSON[0][1].length
-   ;msgbox % oJSON[0][1][3]
-   ;clipboard := json
-   ;trans := 
    trans := oJSON[0][oJSON[0].length -1][oJSON[0][oJSON[0].length -1].length - 1]
    return trans
   ; Loop % oJSON[4].length
