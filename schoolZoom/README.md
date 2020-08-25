@@ -1,6 +1,7 @@
 # Attending Each Period
 
 These are just some scripts to automate attending each one of your school's periods.
+This will only work on MacOS, however it should not be too difficult to make it work on some linux distro. Making it work on windows will be a bit tougher, but it is still possible. If you make it work on an OS that's not Mac, please submit a pull request so we can add it here!
 
 ## Instructions
 
