@@ -4,37 +4,44 @@ which -s brew
 if [[ $? != 0 ]] && ! command -v ggrep &> /dev/null
 then
     echo "This script will need to install homebrew. If you are unsure what homebrew is, you can get a quick overview here: https://techstacker.com/what-is-homebrew/. If you will allow this script to install homebrew, type yes. Otherwise, type no. [yes/no]"
-    agree=""
-    while [[ agree != "yes" && agree != "no" ]]
+
+    while [[ true ]]
     do
         read agree
         if [[ $agree == "no" ]]
         then
             exit 0
-        elif [[ $agree != "yes" ]]
+        elif [[ $agree == "yes" ]]
         then
+            break
+        else
             echo "Please enter yes or no."
         fi
+
     done
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew update
+    printf '\n\n\n\n'
 fi
 
 if ! command -v ggrep &> /dev/null
 then
-    echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install. If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
-    agree=""
-    while [[ agree != "yes" && agree != "no" ]]
-    do
-        read agree
-        if [[ agree == "no" ]]
-        then
-            exit 0
-        elif [[ agree != "yes" ]]
-        then
-            echo "Please enter yes or no."
-        fi
-    done
+  echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install. If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
+  while [[ true ]]
+  do
+      read agree
+      if [[ $agree == "no" ]]
+      then
+          exit 0
+      elif [[ $agree == "yes" ]]
+      then
+          break
+      else
+          echo "Please enter yes or no."
+      fi
+  done
+  brew install grep
+  printf '\n\n\n\n'
 fi
 
 echo "Please the zoom links with single quotes around them for each of your period in order. If you would like to remove a link, type undo to remove the most recent. If you're done, type done.
