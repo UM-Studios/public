@@ -13,3 +13,4 @@ The .py file is the python file with the source code to customize.
 
 ## OS Compatability
 Because this uses commands specific to the Windows Command Prompt, this script only runs on Windows OS.
+If you make this work on a different OS, please submit a pull request so we can add it to this repo.
