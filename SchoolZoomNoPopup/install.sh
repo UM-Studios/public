@@ -44,7 +44,7 @@ then
   printf '\n\n\n\n'
 fi
 
-echo "Please the zoom links with single quotes around them for each of your period in order. If you would like to remove a link, type undo to remove the most recent. If you're done, type done.
+echo "Please type the zoom links with single quotes around them for each of your period in order. If you would like to remove a link, type undo to remove the most recent. If you're done, type done.
 For example,
 
 'https://us04web.zoom.us/j/79243587155?pwd=QXc5RGcrUXA1Y0RubXJOYWZjQlJsQT09'
