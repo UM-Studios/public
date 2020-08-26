@@ -1,11 +1,15 @@
 # Wifi
 
+## Description
 This script allows you to view the passwords stored on your computer by running commands in the windows command line.
 
-Simply downloading wifi.exe and double clicking it will automatically run the commands. Running as administrator is advised because many wifi passwords will not be seen otherwise. After the program is done running, check the folder for "SavedPasswords.txt" and the passwords should be there along with the wifi name.
+## Instructions
+1. Download wifi.exe
+2. Go to where the file is stored and double click wifi.exe. If possible run the .exe file as administrator by right-clicking the file and clicking "Run as administrator".
+3. After the program is done running, check the location for a text file named "SavedPasswords.txt". Opening this file should show you the wifi passwords saved on your computer.
 
-The .py file is the python file in case you want to customize any of the code. 
+## Customization
+The .py file is the python file with the source code to customize.
 
-## Windows only
-
-Because this runs commands from the windows command line, this is currently only compatible with windows devices.
+## OS Compatability
+Because this uses commands specific to the Windows Command Prompt, this script only runs on Windows OS.
