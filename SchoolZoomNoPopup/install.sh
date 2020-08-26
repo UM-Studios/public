@@ -94,7 +94,7 @@ do
     
     echo "#!/usr/bin/env bash
 
-    $PWD/zoom.sh 1" > $file
+\$PWD/zoom.sh 1" > $file
 
     chmod 700 $file
 done
@@ -201,7 +201,7 @@ do
         continue
     fi
     
-    crons+=("${cmd[3]} ${cmd[2]} * * ${cmd[1]} bash -lc $PWD/zoomp${cmd[0]}.sh")
+    crons+=("${cmd[3]} ${cmd[2]} * * ${cmd[1]} cd $PWD && bash -lc $PWD/zoomp${cmd[0]}.sh")
     tasks+=("${cmd[0]} ${cmd[1]} ${cmd[2]} ${cmd[3]}")
     printf "\n"
     echo "Current tasks:"
