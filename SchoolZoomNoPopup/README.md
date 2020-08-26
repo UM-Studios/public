@@ -1,6 +1,7 @@
 # Attend Your School's Zoom Meetings
 
-This is a script to automatically join you into each of your period's zoom links at the correct time. At the moment, this is a MacOS only script.
+This is a script to automatically join you into each of your period's zoom links at the correct time. 
+*NOTE* If you move this directory around after running `install.sh`, you will have to rerun it.
 
 ## Instructions
 
@@ -13,6 +14,10 @@ cd public/SchoolZoomNoPopup
 ```
 3. In terminal, type `./install.sh` and do what the script tells you to do. That's all!
 
-## Note
+## OS Compatibility
 
-If you move this directory around, you will have to redo the `install.sh`.
+At the moment, this script will only work for MacOS, however with a bit of tweaking it should work for most Linux distros. It will take a lot of work to make it work on Windows.
+
+## Customization
+
+You can directly edit install.sh to change the format in which it gives you prompts. zoom.sh is just a script for opening zoom links.
