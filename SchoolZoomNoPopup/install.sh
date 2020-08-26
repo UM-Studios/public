@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 which -s brew
-if [[ $? != 0 ]] && ! command -v ggrep &> /dev/null
+if [[ $? != 0 ]] && [[ ! command -v ggrep &> /dev/null || ! command -v jq &> /dev/null ]]
 then
     echo "This script will need to install homebrew. If you are unsure what homebrew is, you can get a quick overview here: https://techstacker.com/what-is-homebrew/. If you will allow this script to install homebrew, type yes. Otherwise, type no. [yes/no]"
 
@@ -24,9 +24,29 @@ then
     printf '\n\n\n\n'
 fi
 
+if ! command -v jq &> /dev/null
+then
+  echo "This script needs to install jq If you are unsure what ggrep is, you can get a quick overview here: https://webgeodatavore.com/jq-json-manipulation-command-line-with-geojson.html#:~:text=jq%20is%20a%20lightweight%20and,let%20you%20play%20with%20text.. If you will allow this script to install jq, type yes. Otherwise, type no. [yes/no]"
+  while [[ true ]]
+  do
+      read agree
+      if [[ $agree == "no" ]]
+      then
+          exit 0
+      elif [[ $agree == "yes" ]]
+      then
+          break
+      else
+          echo "Please enter yes or no."
+      fi
+  done
+  brew install jq
+  printf '\n\n\n\n'
+fi
+
 if ! command -v ggrep &> /dev/null
 then
-  echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install. If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
+  echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install). If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
   while [[ true ]]
   do
       read agree
