@@ -16,10 +16,10 @@ cd public/SchoolZoomNoPopup
 ```
 3. In terminal, type `./install.sh` and do what the script tells you to do. That's all!
 
-## OS Compatibility
-
-At the moment, this script will only work for MacOS, however with a bit of tweaking it should work for most Linux distros. It will take a lot of work to make it work on Windows.
-
 ## Customization
 
 You can directly edit install.sh to change the format in which it gives you prompts. zoom.sh is just a script for opening zoom links.
+
+## OS Compatability
+
+Currently, this script will only work on MacOS. However, with a little bit of tweaking, such as removing the ggrep check and changing `open` to `xdg-open`, it should not be too difficult to make this work on Linux. Unless you completely rewrote this in batch, this script will not work on Windows. If you make this script work on any other OS, please submit a pull request so we can add it to this repo.
