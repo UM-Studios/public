@@ -1,6 +1,4 @@
 # Wifi
-
-## Description
 This script allows you to view the passwords stored on your computer by running commands in the windows command line.
 
 ## Instructions
