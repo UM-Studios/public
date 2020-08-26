@@ -8,13 +8,14 @@ AOT windows will behave like normal windows among each other, as windows are eit
 
 You only need the .exe file unless you want to customize the hotkeys. Simply run the script and the hotkeys will be active.
 
+## Instructions
+
+You should make this script run on startup. See [here](https://www.howtogeek.com/208224/how-to-add-programs-files-and-folders-to-system-startu    p-in-windows-8.1/)
+
 ## Customization
 
 If you want to change the hotkey triggers, you'll have to install AutoHotkey and modify the .ahk file.
 
-## Run on startup
-See [here](https://www.howtogeek.com/208224/how-to-add-programs-files-and-folders-to-system-startup-in-windows-8.1/) 
+## OS Compatability
 
-## Windows only
-
-At the moment, this script will only work on Windows, as other OSs don't support AutoHotKey.
+At the moment, this script will only work on Windows, as other OSs don't support AutoHotKey. If you make this script work on any other OS, please submit a pull request so we can add it to this repo.
