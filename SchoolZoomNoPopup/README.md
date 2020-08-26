@@ -12,3 +12,7 @@ git clone https://github.com/UM-Studios/public.git
 cd public/SchoolZoomNoPopup
 ```
 3. In terminal, type `./install.sh` and do what the script tells you to do. That's all!
+
+## Note
+
+If you move this directory around, you will have to redo the `install.sh`.
