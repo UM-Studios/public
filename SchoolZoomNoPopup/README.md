@@ -4,6 +4,11 @@ This is a script to automatically join you into each of your period's zoom links
 
 ## Instructions
 
-1. Clone this repository. If you don't know how to do that, see here: `https://docs.github.com/en/enterprise/2.13/user/articles/cloning-a-repository`. You will need a github account as well.
-2. In terminal, cd into the directory containing the scripts. 
+1. If you do not have git, install it. In terminal, type `git --version`, and if it prompts you to install it, follow through.
+2. Clone this repository. You will need a github account as well. If you don't know how to do that, open up terminal, and type
+```
+cd ~
+git clone https://github.com/UM-Studios/public.git
+cd public/SchoolZoomNoPopup
+```
 3. In terminal, type `./install.sh` and do what the script tells you to do. That's all!
