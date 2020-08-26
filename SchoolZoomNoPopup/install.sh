@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 which -s brew
-if [[ $? != 0 ]] && [[ ! command -v ggrep &> /dev/null || ! command -v jq &> /dev/null ]]
+if [[ $? != 0 ]]
 then
     echo "This script will need to install homebrew. If you are unsure what homebrew is, you can get a quick overview here: https://techstacker.com/what-is-homebrew/. If you will allow this script to install homebrew, type yes. Otherwise, type no. [yes/no]"
 
