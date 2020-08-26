@@ -9,6 +9,8 @@ This is a script to automatically join you into each of your period's zoom links
 2. Clone this repository. You will need a github account as well. If you don't know how to do that, open up terminal, and type
 ```
 cd ~
+mdkir -p src
+cd src
 git clone https://github.com/UM-Studios/public.git
 cd public/SchoolZoomNoPopup
 ```
