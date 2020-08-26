@@ -14,4 +14,4 @@ If you have a specific meeting code you often want to join, you can create an al
 
 ## Mac only
 
-At the moment, this script will only work on macos. However, with a little bit of tweaking it should work on linux, however I haven't gotten around to doing that yet. If you make this work on linux, please make a pull request so we can add it to this repo. Same with windows, except you might ahve to do a lot more tweaking there.
+At the moment, this script will only work on macos. However, with a little bit of tweaking it should work on linux, however I haven't gotten around to doing that yet. If you make this work on linux, please make a pull request so we can add it to this repo. Same with windows, except you might have to do a lot more tweaking there.
