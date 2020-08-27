@@ -4,6 +4,8 @@ This script will let you join a zoom link directly from terminal.
 
 ## Instructions
 
+You can download the file by clicking on it then clicking download. 
+
 1. You first should add this script to your path. In your `.bashrc`/`.zshrc`/whatever else you may use, add `export PATH=$PATH:/PATH/TO/zoom.sh`
 2. Anywhere in terminal, type `zoom.sh '<zoom link>'`
 
@@ -13,7 +15,7 @@ Pair this script with a dropdown terminal and it will save you "lots" of time (a
 
 If you have a specific meeting code you often want to join, you can create an alias with that zoom link and this zoom script for even more speed.
 
-##Customization
+## Customization
 
 Edit the zoom.sh file to make it do whatever you want
 
