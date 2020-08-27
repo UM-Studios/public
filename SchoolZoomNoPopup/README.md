@@ -14,7 +14,10 @@ cd src
 git clone https://github.com/UM-Studios/public.git
 cd public/SchoolZoomNoPopup
 ```
-3. In terminal, type `./install.sh` and do what the script tells you to do. That's all!
+Alternatively, you can paste the folder url [here](https://kinolien.github.io/gitzip/) and click download to download the repository as a zip file.
+
+Once you have cloned or unzipped the colder, type `./install.sh` in terminal and do what the script tells you to do. That's all!
+
 
 ## Customization
 

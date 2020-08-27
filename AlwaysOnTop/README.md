@@ -10,6 +10,8 @@ You only need the .exe file unless you want to customize the hotkeys. Simply run
 
 ## Instructions
 
+You can download the .exe file by clicking on it then clicking download. Simply double click the .exe file to run the script. 
+
 You should make this script run on startup. See [here](https://www.howtogeek.com/208224/how-to-add-programs-files-and-folders-to-system-startup-in-windows-8.1/)
 
 ## Customization
