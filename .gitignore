@@ -3,3 +3,7 @@
 **/__pycache__
 **/package-lock.json
 **/node_modules
+/venv
+/env
+.env
+*.pyc
