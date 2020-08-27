@@ -3,7 +3,7 @@
 LINKS=( `jq -r .[] $PWD/links.json` )
 PRE_LINK=${LINKS[$1 - 1]}
 echo $1
-CONFNO=`echo $PRE_LINK | ggrep -oP '(?<=\/j\/)[0-9]*'`
+CONFNO=`echo $PRE_LINK | ggrep -oP '(?<=\/[a-zA-Z]\/)[0-9]*'`
 PASSWD=`echo $PRE_LINK | ggrep -oP '(?<=pwd=)[0-9a-zA-Z]*'`
 
 if [ ! -z "$PWD" ]

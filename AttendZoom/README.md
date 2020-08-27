@@ -15,7 +15,7 @@ Pair this script with a dropdown terminal and it will save you "lots" of time (a
 
 If you have a specific meeting code you often want to join, you can create an alias with that zoom link and this zoom script for even more speed.
 
-##Customization
+## Customization
 
 Edit the zoom.sh file to make it do whatever you want
 

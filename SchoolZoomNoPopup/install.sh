@@ -19,49 +19,66 @@ then
         fi
 
     done
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew update
+    if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    then
+        echo "Installed homebrew successfully"
+    else
+        echo "Oops! looks like something went wrong with the download. Please read the error message and try to download homebrew yourself. Or, restart this script and see if it works then."
+        exit 1
+    fi
     printf '\n\n\n\n'
 fi
 
 if ! command -v jq &> /dev/null
 then
-  echo "This script needs to install jq If you are unsure what ggrep is, you can get a quick overview here: https://webgeodatavore.com/jq-json-manipulation-command-line-with-geojson.html#:~:text=jq%20is%20a%20lightweight%20and,let%20you%20play%20with%20text.. If you will allow this script to install jq, type yes. Otherwise, type no. [yes/no]"
-  while [[ true ]]
-  do
-      read agree
-      if [[ $agree == "no" ]]
-      then
-          exit 0
-      elif [[ $agree == "yes" ]]
-      then
-          break
-      else
-          echo "Please enter yes or no."
-      fi
-  done
-  brew install jq
-  printf '\n\n\n\n'
+    echo "This script needs to install jq If you are unsure what jq is, you can get a quick overview here: https://webgeodatavore.com/jq-json-manipulation-command-line-with-geojson.html#:~:text=jq%20is%20a%20lightweight%20and,let%20you%20play%20with%20text.. If you will allow this script to install jq, type yes. Otherwise, type no. [yes/no]"
+    while [[ true ]]
+    do
+        read agree
+        if [[ $agree == "no" ]]
+        then
+            exit 0
+        elif [[ $agree == "yes" ]]
+        then
+            break
+        else
+            echo "Please enter yes or no."
+        fi
+    done
+    if brew install jq
+    then
+        echo "Installed jq successfully"
+    else
+        echo "Oops! looks like something went wrong with the download. Please read the error message and try to install jq yourself. Or, restart this script and see if it works then."
+        exit 1
+    fi
+    printf '\n\n\n\n'
 fi
 
 if ! command -v ggrep &> /dev/null
 then
-  echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install). If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
-  while [[ true ]]
-  do
-      read agree
-      if [[ $agree == "no" ]]
-      then
-          exit 0
-      elif [[ $agree == "yes" ]]
-      then
-          break
-      else
-          echo "Please enter yes or no."
-      fi
-  done
-  brew install grep
-  printf '\n\n\n\n'
+    echo "This script needs to install ggrep (Don't worry, this is the last thing you'll have to install). If you are unsure what ggrep is, you can get a quick overview here: https://binx.io/blog/2018/11/19/learning-grep/. If you will allow this script to install ggrep, type yes. Otherwise, type no. [yes/no]"
+    while [[ true ]]
+    do
+        read agree
+        if [[ $agree == "no" ]]
+        then
+            exit 0
+        elif [[ $agree == "yes" ]]
+        then
+            break
+        else
+            echo "Please enter yes or no."
+        fi
+    done
+    if brew install grep
+    then
+        echo "Successfully installed ggrep"
+    else
+        echo "Oops! looks like something went wrong with the download. Please read the error message and try to install ggrep yourself. Or, restart this script and see if it works then."
+        exit 1
+    fi
+    printf '\n\n\n\n'
 fi
 
 echo "Please type the zoom links with single quotes around them for each of your period in order. If you would like to remove a link, type undo to remove the most recent. If you're done, type done.
