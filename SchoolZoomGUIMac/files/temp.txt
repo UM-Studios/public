@@ -1,0 +1,6 @@
+from createTask import *
+ta = Task('lin', '20', '17', '5', 'https://zoom.us/j/93595386954?pwd=R090eFFzeDVocXVRMkY2QjNMUzZoZz09')
+ta.create_file()
+ta.add_task()
+ta.schedule_cron()
+ta.edit_task(enabled = False)

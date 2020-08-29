@@ -5,7 +5,7 @@ PRE_LINK=${LINKS[$1 - 1]}
 
 CONFNO=`echo $PRE_LINK | ggrep -oP '(?<=\/[a-zA-Z]\/)[0-9]*'`
 PASSWORD=`echo $PRE_LINK | ggrep -oP '(?<=pwd=)[0-9a-zA-Z]*'`
-TOKEN=`echo $PRE_LINK | ggrep -oP '(?<=tk=)[0-9a-zA-Z\-_.]*'`
+TOKEN=`echo $PRE_LINK | ggrep -oP '(?<=tk=)[0-9a-zA-Z\-_\.]*'`
 
 if [ ! -z "$CONFNO" ]
 then
