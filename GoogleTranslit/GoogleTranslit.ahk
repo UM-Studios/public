@@ -4,6 +4,14 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ~LButton::tooltip
 
+!r::
+   gosub, ShowTranslate
+return
+
+!f::
+   gosub, CopyTranslate
+return
+
 !t::
    gosub, ShowTranslit
 return
@@ -20,7 +28,34 @@ ShowTranslit:
    if !errorlevel{
       sleep, 100
       input := clipboard
-      lit := translit(input)
+      lit := translit(input, "lit")
+      if (lit = 0) {
+         output := input
+      }
+      else{
+         if !IsObject(lit){
+            output := lit
+         }
+         else
+         output := clipboard
+      }
+   }
+   else {
+      output := "invalid input"
+   }
+   clipboard := clipsave
+   tooltip % output
+return
+
+ShowTranslate:
+   clipsave := ClipboardAll
+   clipboard := 
+   send ^c
+   clipwait, 0
+   if !errorlevel{
+      sleep, 100
+      input := clipboard
+      lit := translit(input, "late")
       if (lit = 0) {
          output := input
       }
@@ -48,7 +83,40 @@ CopyTranslit:
    if !errorlevel{
       sleep, 100
       input := clipboard
-      lit := translit(input)
+      lit := translit(input, "lit")
+      if (lit = 0) {
+         clipboard := input
+         output := input
+      }
+      else{
+         if !IsObject(lit){
+            clipboard := lit
+            output := lit
+         }
+         else{
+            tooltip invalid input
+            settimer, RemoveToolTip, -600
+      }
+      }
+      tooltip % output
+   }
+   else {
+      tooltip invalid input
+      clipboard := clipsave
+      settimer, RemoveToolTip, -600
+   }
+return
+
+CopyTranslate:
+   tooltip, checking
+   clipsave := ClipboardAll
+   clipboard := 
+   send ^c
+   clipwait, 0
+   if !errorlevel{
+      sleep, 100
+      input := clipboard
+      lit := translit(input, "late")
       if (lit = 0) {
          clipboard := input
          output := input
@@ -76,11 +144,14 @@ RemoveToolTip:
 tooltip 
 return
 
-translit(str, from := "auto", to := "en")  {
+translit(str, type, from := "auto", to := "en")  {
    static JS := CreateScriptObj(), _ := JS.( GetJScript() ) := JS.("delete ActiveXObject; delete GetObject;")
    json := SendRequest(JS, str, to, from, proxy := "")
    oJSON := JS.("(" . json . ")")
-   trans := oJSON[0][oJSON[0].length -1][oJSON[0][oJSON[0].length -1].length - 1]
+   if(type = "lit")
+      trans := oJSON[0][oJSON[0].length -1][oJSON[0][oJSON[0].length -1].length - 1]
+   if(type = "late")
+      trans := oJSON[0][0][0]
    return trans
   ; Loop % oJSON[4].length
   ;       msgbox % oJSON[2][A_Index][0]
