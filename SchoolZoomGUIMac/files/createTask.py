@@ -43,18 +43,11 @@ class Task():
     token = re.compile(r'(?<=tk=)[0-9a-zA-Z\-_\.]*').search(self.link)
     password = re.compile(r'(?<=pwd=)[0-9a-zA-Z]*').search(self.link)
 
-    if confno != None:
-      confno = f'&confno={confno.group(0)}'
+    confno = '' if confno == None else f'&confno={confno.group(0)}'
 
-    if token == None:
-      token = ''
-    else:
-      token = f'&tk={token.group(0)}'
+    token = '' if token == None else f'&tk={token.group(0)}'
 
-    if password == None:
-      password = ''
-    else:
-      password = f'&pwd={password.group(0)}'
+    password = '' if password == None else f'&pwd={password.group(0)}'
 
     post_link = f'zoommtg://zoom.us/join?action=join{confno}{token}{password}'
     new_open_script = open_script.replace('[link]', post_link)
