@@ -4,16 +4,8 @@ from datetime import datetime
 from json import JSONEncoder
 import json
 from pathlib import Path
-
-day_to_num = {
-  'monday': 1,
-  'tuesday': 2,
-  'wednesday': 3,
-  'thursday': 4,
-  'friday': 5,
-  'saturday': 6,
-  'sunday': 7
-}
+from os import path
+import os.path
 
 open_script = '''#!/usr/bin/env bash
 
@@ -37,6 +29,7 @@ class Task():
     self.minute = minute
     self.hour = hour
     self.day_of_week = day_of_week
+    self.cron = f'{self.minute} {self.hour} * * {self.day_of_week} cd {str(Path.home())} && bash -lc {str(Path.home())}/.createzoom/zoomOpen{self.name}.sh'
 
   def create_file(self):
     confno = re.compile(r'(?<=\/[a-zA-Z]\/)[0-9]*').search(self.link)
@@ -52,14 +45,11 @@ class Task():
     post_link = f'zoommtg://zoom.us/join?action=join{confno}{token}{password}'
     new_open_script = open_script.replace('[link]', post_link)
 
-    os.system(f'cd ~/.createzoom; touch zoomOpen{self.name}.sh; echo "{new_open_script}" > zoomOpen{self.name}.sh; chmod 700 zoomOpen{self.name}.sh')
+    os.system(f'mkdir -p ~/.createzoom; cd ~/.createzoom; touch zoomOpen{self.name}.sh; echo "{new_open_script}" > zoomOpen{self.name}.sh; chmod 700 zoomOpen{self.name}.sh')
   
   def schedule_cron(self):
     os.system('crontab -l > mycron')
-
-    self.cron = f'{self.minute} {self.hour} * * {self.day_of_week} cd {str(Path.home())} && bash -lc {str(Path.home())}/.createzoom/zoomOpen{self.name}.sh'
     os.system(f'echo "{self.cron}" >> mycron')
-    
     os.system('crontab mycron; rm mycron')
 
   def add_task(self):
@@ -109,9 +99,15 @@ class Task():
 
   @classmethod
   def get_all_tasks(cls):
+    if not path.exists(f'{str(Path.home())}/.createzoom/tasks.json'):
+      os.system('mkdir -p ~/.createzoom; cd ~/.createzoom; touch tasks.json; echo "[]" > tasks.json')
     with open(f'{str(Path.home())}/.createzoom/tasks.json') as f:
       all_tasks = json.loads(f.read())
     return all_tasks
+  
+  @classmethod
+  def run_task(cls, name):
+    os.system(f'~/.createzoom/zoomOpen{name}.sh')
 
 
 
