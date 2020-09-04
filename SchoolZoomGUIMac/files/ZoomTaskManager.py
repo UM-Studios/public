@@ -88,7 +88,7 @@ class TaskFrame:
         self.nextTrigger = Sized_Label(parent, width=155, height=20, text=self.nexttext, anchor='w')
         self.runbutton = Button(parent, text="Run", command=self.run)
         self.editbutton = Button(parent, text="Edit", command=self.edit)
-        self.deletebutton = Button(parent, text="-", bg='red3', fg='white', command=self.delete)
+        self.deletebutton = Button(parent, text="-", bg='red3', command=self.delete)
     def show(self):
         self.parent.pack(fill=X)
         self.namebutton.pack(side=LEFT)
