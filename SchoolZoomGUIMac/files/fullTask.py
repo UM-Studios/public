@@ -63,6 +63,9 @@ class FullTask():
       t = Task(self.name, trigger.time.minute, trigger.time.hour, day_to_num[trigger.day], self.link)
       t.schedule_cron()
       t.add_task()
+    if len(self.triggers) == 0:
+      t = Task(self.name, None, None, None, self.link)
+      t.add_task()
 
   #deletes task and all its triggers
   @classmethod
@@ -87,7 +90,8 @@ class FullTask():
       tup = (task['name'], task['link'])
       if tup not in full_tasks_raw:
         full_tasks_raw[tup] = []
-      full_tasks_raw[tup].append((datetime.datetime(2020, 1, 1, hour = int(task['hour']), minute = int(task['minute'])), num_to_day[int(task['day_of_week'])]))
+      if task['hour'] != None:
+        full_tasks_raw[tup].append((datetime.datetime(2020, 1, 1, hour = int(task['hour']), minute = int(task['minute'])), num_to_day[int(task['day_of_week'])]))
         
     full_tasks = []
     for full_task in full_tasks_raw:

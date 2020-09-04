@@ -10,7 +10,7 @@ import datetime
 
 window = Tk()
 window.title("Zoom Task Manager")
-window.geometry("780x400")
+window.geometry("880x400")
 window.resizable(False, True)
 
 titlefont = font.Font(family='Arial', size=10, underline=1)
@@ -40,7 +40,7 @@ class MainWindow:
     def edit(self, task):
         self.popupWindow = Toplevel(self.master)
         self.popupWindow.transient(self.master)
-        self.popupWindow.geometry("%dx%d+%d+%d" % (430,250,self.master.winfo_x() + 50, self.master.winfo_y() + 130))
+        self.popupWindow.geometry("%dx%d+%d+%d" % (600,250,self.master.winfo_x() + 50, self.master.winfo_y() + 130))
         self.popupWindow.resizable(False, True)
         self.popup = PopupMenu(self.popupWindow, self, type='edit', task=task)
         self.popupWindow.grab_set()
@@ -48,7 +48,7 @@ class MainWindow:
     def create(self):
         self.popupWindow = Toplevel(self.master)
         self.popupWindow.transient(self.master)
-        self.popupWindow.geometry("%dx%d+%d+%d" % (430,250,self.master.winfo_x() + 50, self.master.winfo_y() + 130))
+        self.popupWindow.geometry("%dx%d+%d+%d" % (600,250,self.master.winfo_x() + 50, self.master.winfo_y() + 130))
         self.popupWindow.resizable(False, True)
         self.popup = PopupMenu(self.popupWindow, self)
         self.popupWindow.grab_set()

@@ -63,11 +63,13 @@ class Task():
     os.system('crontab -l > mycron')
     with open('mycron', 'r') as f:
       crons = f.readlines()
-    if self.enabled:
+    if self.enabled and self.cron + '\n' in crons:
       crons.remove(self.cron + '\n')
     os.system('rm mycron; touch mycron')
     for cron in crons:
-      os.system(f'echo "{cron}" >> mycron')
+      if cron != '' and cron != '\n':
+        print(cron)
+        os.system(f'echo "{cron}" >> mycron')
     os.system('crontab mycron; rm mycron')
     all_tasks = self.get_all_tasks()
     all_tasks.remove(self.reprJSON())
