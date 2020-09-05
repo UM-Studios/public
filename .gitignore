@@ -5,6 +5,7 @@
 **/node_modules
 /venv
 /env
+env/
 .env
 *.pyc
 tempCodeRunnerFile.*
