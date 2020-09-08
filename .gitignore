@@ -10,3 +10,4 @@ env/
 *.pyc
 tempCodeRunnerFile.*
 *.xml
+test.*
