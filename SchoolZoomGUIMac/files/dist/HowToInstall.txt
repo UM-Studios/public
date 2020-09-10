@@ -1,5 +1,0 @@
-1. Drag the ZUUM app into your applications folder
-2. Run the ZUUM app from your applications folder (This will open up terminal as it's not an application bundle, don't worry this is fine)
-
-Notes
-When you add run times or delete meetings, your mac will ask you for permissions. This is on purpose and it will not do anything to your computer. You can check out our github to look at the code yourself here: https://github.com/UM-Studios/public
