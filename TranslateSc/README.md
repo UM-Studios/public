@@ -22,7 +22,7 @@ cd files
 ```
 Follow the instructions it gives you.
 
-4. Once you are done running the install script, you will have to restart your terminal. After restarting terminal, we will first have to get back inside the file folder, then you can run the run.sh script. In terminal, type
+4. Once you are done running the install script, you will have to restart your terminal (quitting and reopening terminal). After restarting terminal, we will first have to get back inside the file folder, then you can run the run.sh script. In terminal, type
 ```
 cd ~/src/files
 ./run.sh -H
