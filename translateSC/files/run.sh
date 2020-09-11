@@ -15,7 +15,7 @@ source venv/bin/activate
 
 if [[ getopts ]]
 then
-    echo "use ./run.sh -T for traditional or ./run.sh -S for simplified"
+    echo "use ./run.sh -T for traditional or ./run.sh -S for simplified. For help, do ./run.sh -H"
 fi
 
 while getopts "TSH" FLAG
@@ -34,7 +34,7 @@ do
 Use ./run.sh -T for traditional text and ./run.sh -S for simplified text."
             ;;
         *)
-            echo "use -T for traditional or -S for simplified"
+            echo "use ./run.sh -T for traditional or ./run.sh -S for simplified. For help, do ./run.sh -H"
             ;;
     esac
 done
