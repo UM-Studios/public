@@ -30,10 +30,5 @@ then
 fi
 
 brew install python
-pip install virtualenv
-virtualenv venv 
-source venv/bin/activate
-pip install -r requirements.txt
-deactive
-mv chi_tra.traineddata /usr/local/share/tessdata
-mv chi_sim.traineddata /usr/local/share/tessdata
+
+echo "All done! Please restart terminal before running the program. To run, type ./run.sh"
