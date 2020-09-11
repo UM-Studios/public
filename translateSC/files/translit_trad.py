@@ -5,8 +5,6 @@ import pytesseract
 import keyboard
 import time
 import os
-import tkinter as tk
-from tkinter import ttk
 
 def translit(to_trans):
   return pinyin.get(to_trans)
@@ -33,8 +31,8 @@ def exec_translate():
   print(translate(to_trans))
   rm_sc()
 
-keyboard.add_hotkey('t+r', exec_translate)
-keyboard.add_hotkey('t+l', exec_translit)
+keyboard.add_hotkey('f5', exec_translate)
+keyboard.add_hotkey('f6', exec_translit)
 
 while True:
   time.sleep(100000)

@@ -30,5 +30,6 @@ then
 fi
 
 brew install python
+brew install tesseract
 
-echo "All done! Please restart terminal before running the program. To run, type ./run.sh"
+echo "All done! Please restart terminal before running the program. To run, type ./run.sh -S for simplified or ./run.sh -T for traditional"
