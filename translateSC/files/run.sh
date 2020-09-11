@@ -11,7 +11,7 @@ then
     cp chi_sim.traineddata /usr/local/share/tessdata
 fi
 
-source ../venv/bin/activate
+source venv/bin/activate
 
 if [[ getopts ]]
 then
