@@ -31,6 +31,8 @@ This will do some one time installations and bring up the help menu. From there,
 
 5. To use this program, run the run.sh script and press f5 to translate a screenshot and f6 to give you pinyin. The results will be shown on terminal, so make sure to keep an eye on it! We highly recommend you use this with a dropdown terminal, which you can set up [here](https://www.sharmaprakash.com.np/guake-like-dropdown-terminal-in-mac/).
 
+6. When you are done, in terminal, press ctrl c to stop the program.
+
 ## Customization
 
 To customize the hotkey triggers, you will need to edit the translit_trad.py or translit_simp.py, depending on whether you use traditional or simplified. On lines 34 and 35, you should see `keyboard.add_hotkey('f5', exec_translate)` and `keyboard.add_hotkey('f6', exec_translit)` respectively. Line 34 controls the translate hotkey, which is set to f5 by default, and 35 controls the translit hotkey which is set to f6 automatically.
