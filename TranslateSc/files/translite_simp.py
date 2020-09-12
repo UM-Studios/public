@@ -1,5 +1,4 @@
 from googletrans import Translator
-import pinyin
 from PIL import Image
 import pytesseract
 import keyboard
@@ -12,12 +11,13 @@ from tkinter import ttk
 
 
 def translit(to_trans):
-    return pinyin.get(to_trans)
+    translator = Translator()
+    return translator.translate(to_trans).translit
 
 
 def translate(to_trans):
     translator = Translator()
-    return (translator.translate(to_trans).text)
+    return translator.translate(to_trans).text
 
 
 def copy_clipboard():
@@ -37,26 +37,26 @@ def rm_sc():
     os.system('rm /tmp/translit.png')
 
 
-def exec_translit():
-    take_sc()
+def ocr():
     try:
         Image.open('/tmp/translit.png')
     except:
         print('u are a nerd')
         return
     to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_sim')
+    return to_trans
+
+
+def exec_translit():
+    take_sc()
+    to_trans = ocr()
     print(translit(to_trans))
     rm_sc()
 
 
 def exec_translate():
     take_sc()
-    try:
-        Image.open('/tmp/translit.png')
-    except:
-        print('u are a dumbass')
-        return
-    to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_sim')
+    to_trans = ocr()
     print(translate(to_trans))
     rm_sc()
 
