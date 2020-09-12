@@ -168,3 +168,9 @@ tzlocal==2.1
 unicodecsv==0.14.1
 urllib3==1.25.10
 virtualenv==20.0.31
+
+pip~=20.2.2
+wheel~=0.35.1
+setuptools~=49.6.0
+PyAutoGUI~=0.9.50
+pyperclip~=1.8.0
