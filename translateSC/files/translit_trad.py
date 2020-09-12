@@ -75,6 +75,6 @@ keyboard.add_hotkey('f6', exec_translate)
 keyboard.add_hotkey('f5', exec_translit)
 keyboard.add_hotkey('command+f6', exec_cpy_translate)
 keyboard.add_hotkey('command+f5', exec_cpy_translit)
-print(keyboard.all_modifiers)
+
 while True:
     time.sleep(100000)
