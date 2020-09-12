@@ -60,7 +60,6 @@ def exec_translate():
     print(translate(to_trans))
     rm_sc()
 
-
 def exec_cpy_translit():
     text = copy_clipboard()
     print(translit(text))
