@@ -27,7 +27,7 @@ do
             ;;
         S)
             echo "This script requires admin priviliges to run. If your computer prompts you, please type in your password to allow privilges. If you do not want to do this, press ctrl c"
-            sudo python translit_simp.py
+            sudo python translite_simp.py
             ;;
         H)
             echo "Press f5 to take a screenshot of chinese text and get the translation of the text you screenshotted. Press f6 to take a screenshot of chinese text and get the text's pinyin.

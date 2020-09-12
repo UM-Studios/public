@@ -50,24 +50,29 @@ def ocr():
 def exec_translit():
     take_sc()
     to_trans = ocr()
-    print(translit(to_trans))
+    to_trans = translit(to_trans)
+    print(to_trans)
     rm_sc()
 
 
 def exec_translate():
     take_sc()
     to_trans = ocr()
-    print(translate(to_trans))
+    to_trans = translate(to_trans)
+    print(to_trans)
     rm_sc()
+
 
 def exec_cpy_translit():
     text = copy_clipboard()
-    print(translit(text))
+    text = translit(text)
+    print(text)
 
 
 def exec_cpy_translate():
     text = copy_clipboard()
-    print(translate(text))
+    text = translate(text)
+    print(text)
 
 
 keyboard.add_hotkey('f6', exec_translate)
