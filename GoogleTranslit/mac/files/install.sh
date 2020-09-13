@@ -29,9 +29,9 @@ then
   printf '\n\n\n\n'
 fi
 
-# brew install python
-# brew install tesseract
-# brew install wget
+brew install python
+brew install tesseract
+brew install wget
 
 echo "This script needs to install data files for our screenshot character recognition to work. Would you like to install better data for higher accuracy but longer download times, or faster data for less accuracy but faster download times? Type better for better data or faster for faster data [better/faster]"
 
@@ -51,7 +51,13 @@ do
   fi
 done
 
-wget https://github.com/tesseract-ocr/tessdata_$data/archive/master.zip
+wget_out=$(wget https://github.com/tesseract-ocr/tessdata_$data/archive/master.zip)
+if [[ $? -ne 0 ]]
+then
+  echo "Oops look like something went wrong. Look through the error message to find out, or run this script again and see if it works."
+  exit 1
+fi
+
 unzip master.zip
 mv tessdata_$data-master/*.traineddata /usr/local/share/tessdata
 rm master.zip
