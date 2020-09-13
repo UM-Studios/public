@@ -51,9 +51,10 @@ do
   fi
 done
 
-while IFS=, read -r code name; do
-  wget https://github.com/tesseract-ocr/tessdata_$data/raw/master/$code.traineddata
-  mv $code.traineddata /usr/local/share/tessdata
-done < language_codes.csv
+wget https://github.com/tesseract-ocr/tessdata_$data/archive/master.zip
+unzip master.zip
+mv tessdata_$data/*.traineddata /usr/local/share/tessdata
+rm master.zip
+rm -rf tessdata_$data
 
 echo "All done! Please restart terminal before running the program. To run, type ./run.sh -S for simplified or ./run.sh -T for traditional"
