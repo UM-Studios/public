@@ -31,5 +31,12 @@ fi
 
 brew install python
 brew install tesseract
+brew install wget
+
+
+while IFS=, read -r code name; do
+  wget https://github.com/tesseract-ocr/tessdata_best/raw/master/$code.traineddata
+  mv $code.traineddata /usr/local/share/tessdata
+done < language_codes.csv
 
 echo "All done! Please restart terminal before running the program. To run, type ./run.sh -S for simplified or ./run.sh -T for traditional"

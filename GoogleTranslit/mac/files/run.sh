@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-# if [[ ! -d venv ]]
-# then
-#     pip3 install virtualenv
-#     virtualenv venv 
-#     source venv/bin/activate
-#     pip install -r requirements.txt
-#     deactivate
-#     cp -r tessdata/* /usr/local/share/tessdata
-# fi
+if [[ ! -d venv ]]
+then
+    pip3 install virtualenv
+    virtualenv venv 
+    source venv/bin/activate
+    pip install -r requirements.txt
+    deactivate
+fi
 
 source ../venv/bin/activate
 
