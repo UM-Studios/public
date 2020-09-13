@@ -7,13 +7,17 @@ import os
 import pyautogui as pya
 import pyperclip
 from PyQt5.QtWidgets import QApplication, QLabel
+from PyQt5.QtCore import Qt
 
 os.system('rm translites.txt; touch translites.txt')
 
 app = QApplication([])
 
 label = QLabel('Close me when you done')
-    
+  
+flags = Qt.WindowFlags(Qt.WindowStaysOnTopHint)
+label.setWindowFlags(flags)
+
 def translit(to_trans):
     translator = Translator()
     return translator.translate(to_trans).translit
