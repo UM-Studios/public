@@ -50,12 +50,13 @@ def ocr():
         Image.open('/tmp/translit.png')
     except:
         print('u are a nerd')
-        return
+        return 12345
     to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_sim')
     return to_trans
 
 
 def show_res(text):
+    text = str(text)
     label.setText(text)
     os.system(f'echo "{text}" >> translites.txt')
     label.raise_()
@@ -64,6 +65,8 @@ def show_res(text):
 def exec_translit():
     take_sc()
     to_trans = ocr()
+    if to_trans == 12345:
+        return
     to_trans = translit(to_trans)
     show_res(to_trans)
     rm_sc()
@@ -72,6 +75,8 @@ def exec_translit():
 def exec_translate():
     take_sc()
     to_trans = ocr()
+    if to_trans == 12345:
+        return
     to_trans = translate(to_trans)
     show_res(to_trans)
     rm_sc()
