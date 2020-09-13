@@ -56,6 +56,7 @@ def ocr():
 
 
 def show_res(text):
+    text = str(text)
     label.setText(text)
     os.system(f'echo "{text}" >> translites.txt')
     label.raise_()
