@@ -47,11 +47,10 @@ def rm_sc():
 
 def ocr():
     try:
-        Image.open('/tmp/translit.png')
+        to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_tra')
     except:
         print('u are a nerd')
         return 12345
-    to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_sim')
     return to_trans
 
 
