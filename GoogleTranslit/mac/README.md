@@ -1,6 +1,6 @@
 # Translate Screenshot
 
-This script allows you to take screenshots of or highlight any text in any (most) languages, and it will give you the text's translation and pronunciation.. If you're struggling in Chinese class like one of our members is, this will be a very useful script for you. 
+This script allows you to take screenshots of or highlight any text in any (most) languages, and it will give you the text's translation and pronunciation.. If you're struggling in Chinese class like one of our members is, this will be a very useful script for you (along with [Google Translit](https://github.com/UM-Studios/public/tree/master/GoogleTranslit))
 
 ## Instructions
 
@@ -47,4 +47,4 @@ To change it, replace f5 with whatever key combination you want. For example, if
 
 ## OS Compatability
 
-This script will only work on MacOS. For Windows, look at [the windows version](https://github.com/UM-Studios/public/tree/master/GoogleTranslit/windows) which will be adding the screenshot feature shortly. If you make this script work on any other OS, please submit a pull request so we can add it to this repo.
+This script will only work on MacOS. For Windows, look at [Google Translit](https://github.com/UM-Studios/public/tree/master/GoogleTranslit) which will be adding the screenshot feature shortly. If you make this script work on any other OS, please submit a pull request so we can add it to this repo.
