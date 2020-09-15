@@ -6,8 +6,15 @@ import time
 import os
 import pyautogui as pya
 import pyperclip
+import atexit
 from PyQt5.QtWidgets import QApplication, QLabel
 from PyQt5.QtCore import Qt
+
+def programEnd():
+    os.system('rm translites.txt')
+
+
+atexit.register(programEnd)
 
 os.system('rm translites.txt; touch translites.txt')
 
