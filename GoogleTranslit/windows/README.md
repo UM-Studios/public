@@ -22,7 +22,7 @@ You should make this script run on startup. See [here](https://www.howtogeek.com
 
 ## Customization
 
-The settings menu can be shown by pressing Shift + Alt + R. This will let you customize all the hotkeys, along with the language used for OCR. Because the script uses Windows' built in OCR, you will only be able to select languages from language packs you have installed. [Here is how you can install language packs.](https://support.microsoft.com/en-us/help/14236/windows-language-packs)
+The settings menu can be shown by pressing Shift + Alt + R. This will let you customize all the hotkeys, along with the language used for OCR. Because the script uses Windows' built in OCR, you will only be able to select languages from language packs you have installed. [Here is how you can install language packs (make sure to include the Optical Character Recognition language feature).](https://support.microsoft.com/en-us/help/14236/windows-language-packs)
 
 ## OS Compatability 
 
