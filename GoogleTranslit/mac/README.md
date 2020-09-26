@@ -29,14 +29,14 @@ cd ~/src/files
 ```
 This will bring up the help menu and display all the language codes. Then, you can use those language codes to set whatever language you would like it to read. For example, if you wanted to set it to read traditional chinese, you would type `./set_lang.py --lang chi_tra` in terminal.
 
-5. Now, you are ready to run the program. To run it, we will need to run the run.sh script. In terminal, type
+5. Now, you are ready to run the program. To run it, we will need to run the run.sh script. This will apply whenever you want to run the program. In terminal, type
 ```
 cd ~/src/files
 ./run.sh
 ```
 This will do some one time installations and run the program. The default language the screenshotting can read it chinese simplified.
 
-6. To use this program, run the run.sh script and press f5 to translate a screenshot and f6 to give you the text you screenshotted's pronunciation, but it can only read the language you specified. Alternatively, you can highly text and press cmd f5(it may only work with the right cmd key) to translate text you highlighted or cmd f6 to give you the pronuncation of the text you highlighted. The results will be shown in a popup window. DO NOT CLOSE THIS WINDOW. If you close the window, the program will stop and you will have to run it again. 
+6. To use this program, run the run.sh script and press f6 to translate a screenshot and f5 to give you the text you screenshotted's pronunciation, but it can only read the language you specified. Alternatively, you can highly text and press cmd f6(it may only work with the right cmd key) to translate text you highlighted or cmd f5 to give you the pronuncation of the text you highlighted. The results will be shown in a popup window. DO NOT CLOSE THIS WINDOW. If you close the window, the program will stop and you will have to run it again. The program's translate history will also be displayed in a file called translites.txt. 
 
 7. When you are done, close the popup window.
 

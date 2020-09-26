@@ -6,8 +6,15 @@ import time
 import os
 import pyautogui as pya
 import pyperclip
+import atexit
 from PyQt5.QtWidgets import QApplication, QLabel
 from PyQt5.QtCore import Qt
+
+def programEnd():
+    os.system('rm translites.txt')
+
+
+atexit.register(programEnd)
 
 os.system('rm translites.txt; touch translites.txt')
 
@@ -47,7 +54,7 @@ def rm_sc():
 
 def ocr():
     try:
-        to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_tra')
+        to_trans = pytesseract.image_to_string(Image.open('/tmp/translit.png'), lang='chi_sim')
     except:
         print('u are a nerd')
         return 12345

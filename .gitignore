@@ -11,4 +11,5 @@ env/
 tempCodeRunnerFile.*
 *.xml
 test*
+*.bak
 ..bfg-report

@@ -2,147 +2,179 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+DetectHiddenWindows, On
+#include ocr.ahk
+
+config := a_appdata . "\translitSettings.ini"
+
+hkeys := {openSettings: "!+s", showTranslit: "!t", copyTranslit: "!+t", showTranslate: "!r", copyTranslate: "!+r"}
+
+ids := ocr("ShowAvailableLanguages")
+langs := []
+for key, val in ids {
+	langs.Insert(val, key)
+}
+
+set()
+Gui,add,Text,x2 y4, OCR Language:
+Gui,add,DropDownList, x100 y2 w200 vlangSelect
+Gui,add,Text,x2 y44, Show Settings:
+Gui,add,Hotkey, x100 y40 w200 vopenSettingsH
+Gui,add,Text,x2 y84, Show Translit:
+Gui,add,Hotkey, x100 y80 w200 vshowTranslitH
+Gui,add,Text,x2 y124, Copy Translit:
+Gui,add,Hotkey, x100 y120 w200 vcopyTranslitH
+Gui,add,Text,x2 y164, Show Translate:
+Gui,add,Hotkey, x100 y160 w200 vshowTranslateH
+Gui,add,Text,x2 y204, Copy Translate:
+Gui,add,Hotkey, x100 y200 w200 vcopyTranslateH
+Gui,add,button, x50 y250 w80 gApply, Apply
+Gui,add,button, x180 y250 w80 gCancel, Cancel
+get()
+GuiControl,,openSettingsH,%openSettings%
+GuiControl,,showTranslitH,%showTranslit%
+GuiControl,,copyTranslitH,%copyTranslit%
+GuiControl,,showTranslateH,%showTranslate%
+GuiControl,,copyTranslateH,%copyTranslate%
+name := langs[language]
+GuiControl,choosestring,langSelect,%name%
+
+return
+
 ~LButton::tooltip
 
-!r::
-   gosub, ShowTranslate
+OpenSettings:
+   Hotkey, %openSettings%,,Off
+   Hotkey, %showTranslit%,,Off
+   Hotkey, %copyTranslit%,,Off
+   Hotkey, %showTranslate%,,Off
+   Hotkey, %copyTranslate%,,Off
+   Gui,Show,,Translit Settings
 return
-
-!f::
-   gosub, CopyTranslate
-return
-
-!t::
-   gosub, ShowTranslit
-return
-
-!c::
-   gosub, CopyTranslit
-return
-
 ShowTranslit:
-   clipsave := ClipboardAll
-   clipboard := 
-   send ^c
-   clipwait, 0
-   if !errorlevel{
-      sleep, 100
-      input := clipboard
-      lit := translit(input, "lit")
-      if (lit = 0) {
-         output := input
-      }
-      else{
-         if !IsObject(lit){
-            output := lit
-         }
-         else
-         output := clipboard
-      }
-   }
-   else {
-      output := "invalid input"
-   }
-   clipboard := clipsave
-   tooltip % output
+   show("lit")
 return
-
-ShowTranslate:
-   clipsave := ClipboardAll
-   clipboard := 
-   send ^c
-   clipwait, 0
-   if !errorlevel{
-      sleep, 100
-      input := clipboard
-      lit := translit(input, "late")
-      if (lit = 0) {
-         output := input
-      }
-      else{
-         if !IsObject(lit){
-            output := lit
-         }
-         else
-         output := clipboard
-      }
-   }
-   else {
-      output := "invalid input"
-   }
-   clipboard := clipsave
-   tooltip % output
-return
-
 CopyTranslit:
-   tooltip, checking
-   clipsave := ClipboardAll
-   clipboard := 
-   send ^c
-   clipwait, 0
-   if !errorlevel{
-      sleep, 100
-      input := clipboard
-      lit := translit(input, "lit")
-      if (lit = 0) {
-         clipboard := input
-         output := input
-      }
-      else{
-         if !IsObject(lit){
-            clipboard := lit
-            output := lit
-         }
-         else{
-            tooltip invalid input
-            settimer, RemoveToolTip, -600
-      }
-      }
-      tooltip % output
-   }
-   else {
-      tooltip invalid input
-      clipboard := clipsave
-      settimer, RemoveToolTip, -600
-   }
+   show("lit", true)
+return
+ShowTranslate:
+   show("late")
+return
+CopyTranslate:
+   show("late", true)
 return
 
-CopyTranslate:
-   tooltip, checking
-   clipsave := ClipboardAll
-   clipboard := 
-   send ^c
-   clipwait, 0
-   if !errorlevel{
-      sleep, 100
-      input := clipboard
-      lit := translit(input, "late")
-      if (lit = 0) {
-         clipboard := input
-         output := input
-      }
-      else{
-         if !IsObject(lit){
-            clipboard := lit
-            output := lit
-         }
-         else{
-            tooltip invalid input
-            settimer, RemoveToolTip, -600
-      }
-      }
-      tooltip % output
-   }
-   else {
-      tooltip invalid input
-      clipboard := clipsave
-      settimer, RemoveToolTip, -600
-   }
+Guiclose:
+   Reload
 return
+
+Apply() {
+   global hkeys, config, ids, langSelect
+   Gui, Submit
+   id := ids[langSelect]
+   iniwrite, %id%, %config%, Language, language
+   for key, val in hkeys {
+      set := %key%H
+      iniwrite, %set%, %config%, Hotkeys, %key%
+   }
+   Reload
+}
+
+Cancel() {
+	Gui, Cancel
+    Reload
+}
+
+get() {
+	global ids
+	choices := "|"
+	for key, val in ids {
+		choices .= key . "|"
+	}
+	GuiControl,,langSelect,%choices%
+}
+
+set() {
+   global ids, hkeys, language, config, openSettings, showTranslit, copyTranslit, showTranslate, copyTranslate
+   iniread, language, %config%, Language, language
+   if (language = "ERROR" or language = "") {
+      for key, val in ids {
+         iniwrite, %key%, %config%, Language, language
+         iniread, language, %config%, Language, language
+         break
+      }
+   }
+   for key, val in hkeys {
+      iniread, %key%, %config%, Hotkeys, %key%
+      if (%key% = "ERROR") {
+         iniwrite, %val%, %config%, Hotkeys, %key%
+         iniread, %key%, %config%, Hotkeys, %key%
+      }
+   }
+   Hotkey, %openSettings%, OpenSettings
+   Hotkey, %showTranslit%, ShowTranslit
+   Hotkey, %copyTranslit%, CopyTranslit
+   Hotkey, %showTranslate%, ShowTranslate
+   Hotkey, %copyTranslate%, CopyTranslate
+}
 
 RemoveToolTip:
 tooltip 
 return
+
+show(type, copy := false) {
+   global language
+   clipsave := ClipboardAll
+   clipboard := 
+   send ^c
+   clipwait, 0
+   if !errorlevel {
+      text := clipboard
+   }
+   else {
+      runwait, explorer.exe ms-screenclip:
+      winwaitactive, Screen snipping
+      winwaitnotactive, Screen snipping
+      hBitmap := Clipmage()
+      DllCall("CloseClipboard")
+      ;msgbox % hBitmap
+      if (abs(hBitmap) > 4){
+         pIRandomAccessStream := HBitmapToRandomAccessStream(hBitmap)
+         ;msgbox % pIRandomAccessStream
+         DllCall("DeleteObject", "uint", hBitmap)
+         ;msgbox % language
+         text := ocr(pIRandomAccessStream, language)
+         if (text = "") {
+            tooltip couldn't recognize text
+            clipboard := clipsave
+            ;settimer, RemoveToolTip, -600
+            return
+         }
+      }
+      else {
+         tooltip invalid input
+         clipboard := clipsave
+         ;settimer, RemoveToolTip, -600
+         return
+      }
+   }
+   lit := translit(text, type)
+   if (lit = 0) {
+      output := text
+   }
+   else{
+      if !IsObject(lit){
+         output := lit
+      }
+      else
+      output := clipboard
+   }
+   if copy
+      clipboard := output
+   else
+      clipboard := clipsave
+   tooltip % output
+}
 
 translit(str, type, from := "auto", to := "en")  {
    static JS := CreateScriptObj(), _ := JS.( GetJScript() ) := JS.("delete ActiveXObject; delete GetObject;")
@@ -153,34 +185,6 @@ translit(str, type, from := "auto", to := "en")  {
    if(type = "late")
       trans := oJSON[0][0][0]
    return trans
-  ; Loop % oJSON[4].length
-  ;       msgbox % oJSON[2][A_Index][0]
-   /*
-   if !IsObject(oJSON[1])  {
-      Loop % oJSON[0].length
-         trans .= oJSON[0][A_Index - 1][0]
-   }
-   else  {
-      MainTransText := oJSON[0][0][0]
-      Loop % oJSON[1].length  {
-         trans .= "`n+"
-         obj := oJSON[1][A_Index-1][1]
-         Loop % obj.length  {
-            txt := obj[A_Index - 1]
-            trans .= (MainTransText = txt ? "" : "`n" txt)
-         }
-      }
-   }
-   ;msgbox % trans
-   if !IsObject(oJSON[1])
-      MainTransText := trans := Trim(trans, ",+`n ")
-   else
-      trans := MainTransText . "`n+`n" . Trim(trans, ",+`n ")
-
-   from := oJSON[2]
-   trans := Trim(trans, ",+`n ")
-   Return trans
-   */
 }
 
 SendRequest(JS, str, tl, sl, proxy) {
