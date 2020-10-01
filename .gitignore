@@ -4,6 +4,7 @@
 **/package-lock.json
 **/node_modules
 /venv
+*venv*
 /env
 env/
 .env
@@ -13,3 +14,7 @@ tempCodeRunnerFile.*
 test*
 *.bak
 ..bfg-report
+*build*
+*dist*
+*.spec
+setup.py
