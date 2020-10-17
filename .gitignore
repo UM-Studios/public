@@ -18,3 +18,4 @@ test*
 *dist*
 *.spec
 setup.py
+@AutomationLog.txt
