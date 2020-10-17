@@ -14,6 +14,7 @@ class UpdateLabel():
         b = Button(self.win, text="end", command=self.exit)
         b.pack()
         self.win.wm_attributes("-topmost", 1)
+        self.counter = 0
         self.win.mainloop()
     def exit(self):
         self.win.destroy()
@@ -28,9 +29,12 @@ class UpdateLabel():
         self.window = automation.WindowControl(searchDepth=1, ClassName='ZPContentViewWndClass')
         self.toolsMenu = self.window.WindowControl(searchDepth=3, ClassName='ZPControlPanelClass')
     def updater(self):
+        print(f'before detect{self.counter}')
         self.DetectZoomMeeting()
+        print(f'after detect{self.counter}{self.inMeeting}')
         if self.inMeeting:
             self.GetZoomStatus()
+
         if self.inMeeting:
             if self.muted:
                 self.win.configure(bg='red')
@@ -38,7 +42,10 @@ class UpdateLabel():
                 self.win.configure(bg='green')
         else:
             self.win.configure(bg='blue')
+        print(f'{self.counter}')
+        self.counter += 1
         self.win.after(500, self.updater)
+        print(f'after{self.counter}')
     def GetFirstChild(self, control):
         return control.GetFirstChildControl()
     def GetNextSibling(self, control):
