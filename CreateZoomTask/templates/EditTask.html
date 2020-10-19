@@ -2,10 +2,10 @@
 
 {% block content %}
     <form method="POST" action="{{ url_for('edit_task', id=task.id) }}">
-        <input class="h2 taskname" type="text" name="meeting_name" value="{{ task.get_task_name() }}">
+        <input class="h2 taskname" type="text" name="meeting_name" value="{{ task.name }}">
         <br>
         <label>Link: </label>
-        <input type="text" name="meeting_link" value="{{ task.get_link() }}">
+        <input type="text" name="meeting_link" value="{{ task.browser_link() }}" pattern="{{ task.browser_re }}" oninvalid="setCustomValidity('Invalid Zoom link')">
         <br>
         <h4>Add Run Time</h4>
         <label>Every </label>
@@ -44,7 +44,7 @@
                 <option value="Sunday">Sunday</option>
             </select>
             <label> at </label>
-            <input class="times" type="time" name="time{{ loop.index }}" value="{{ trigger.formatted_time() }}">
+            <input class="times" type="time" name="time{{ loop.index }}" value="{{ trigger.military_time() }}">
             <br>
         {% endfor %}
         <br>
@@ -55,7 +55,7 @@
 {% block script %}
 <script>
     {% for trigger in task.triggers %}
-        selectElement(`trigger_day{{ loop.index }}`, `{{ trigger.day }}`)
+        selectElement(`trigger_day{{ loop.index }}`, `{{ trigger.formatted_day() }}`)
     {% endfor %}
 
     function selectElement(id, valueToSelect) {
