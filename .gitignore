@@ -17,6 +17,5 @@ test*
 *build*
 *dist*
 *.spec
-setup.py
 @AutomationLog.txt
 *debug*
