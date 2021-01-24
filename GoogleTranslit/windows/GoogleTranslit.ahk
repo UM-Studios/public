@@ -183,7 +183,10 @@ translit(str, type, from := "auto", to := "en")  {
    if(type = "lit")
       trans := oJSON[0][oJSON[0].length -1][oJSON[0][oJSON[0].length -1].length - 1]
    if(type = "late")
-      trans := oJSON[0][0][0]
+      trans := ""
+      Loop % oJSON[0].length {
+         trans := trans oJSON[0][A_Index][0]
+      }
    return trans
 }
 
